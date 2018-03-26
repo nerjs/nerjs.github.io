@@ -7,4 +7,4 @@ es
 coverage
 .npmignore
 package-lock.json
-./src/glob.js
+src/glob.js
