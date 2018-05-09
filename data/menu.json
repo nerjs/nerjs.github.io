@@ -1,0 +1,72 @@
+{
+	"ctg" : [{
+		"name" : "test",
+		"ico" : "test"
+	},{
+		"name" : "react",
+		"label" : "ReactJs f f ffffffffffffffffffffff",
+		"ico" : "react"
+	},{
+		"name" : "redux",
+		"ico" : "redux"
+	},{
+		"type" : "hr"
+	},{
+		"name" : "nodejs",
+		"label" : "Node Js"
+	},{
+		"name" : "about",
+		"laber" : "про нас"
+	}],
+	"list" : [{
+		"cat" : ["react","redux"],
+		"type" : "package",
+		"name" : "create-redux-store"
+	},{
+		"cat" : ["react"],
+		"type" : "package",
+		"name" : "test-react-package"
+	},{
+		"cat" : ["redux","nodejs","rn"],
+		"type" : "link",
+		"name" : "test-rdux-package",
+		"link": "/z/trp?a=1"
+	},{
+		"cat" : ["electron","nodejs"],
+		"type" : "target-link",
+		"name" : "\"electron\",\"nodejs\"",
+		"link" : "https://npmjs.com/~nerjs"
+	},{
+		"cat" : ["nodejs","rn","express"],
+		"type" : "link",
+		"name" : "\"nodejs\",\"rn\",\"express\"",
+		"link": "/p/nre"
+	},{
+		"cat" : ["mongodb","nodejs","express"],
+		"type" : "package",
+		"name" : "mne"
+	},{
+		"cat" : ["about"],
+		"type" : "link",
+		"name" : "о сайте",
+		"link": "/about"
+	},{
+		"cat" : ["about","src"],
+		"type" : "target-link",
+		"name" : "repo nerjs.github.io",
+		"link" : "https://github.com/nerjs/nerjs.github.io",
+		"ico" : "github"
+	},{
+		"cat" : ["contacts","src"],
+		"type" : "target-link",
+		"name" : "facebook",
+		"link" : "https://www.facebook.com/profile.php?id=100001041659246",
+		"ico" : "fb"
+	},{
+		"cat" : ["contacts"],
+		"type" : "target-link",
+		"name" : "vk",
+		"ico" : "vk",
+		"link" : "https://vk.com/res56253083_qwerty"
+	}]
+}
