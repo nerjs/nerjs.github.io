@@ -1,0 +1,75 @@
+
+name: Notes BS rebuild
+
+on:
+  repository_dispatch:
+    types: [build_notes_gh]
+
+jobs: 
+
+	build:
+
+		runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+        
+    env:
+      CI: false
+		
+		steps:
+			
+			build: 
+
+				- name: Use Node.js ${{ matrix.node-version }}
+					uses: actions/setup-node@v1
+					with:
+						node-version: ${{ matrix.node-version }}
+
+				- name: Clone current repo
+					uses: actions/checkout@v2
+					with:
+						ref: master
+
+				- name: Clone notes repo
+					uses: actions/checkout@v2
+					with: 
+						repository: nerjs/notes_bs
+						ref: master
+						path: __notes_master
+
+
+				- name: Build client
+					run : |
+						cd __notes_master/packages/client
+						yarn
+						eval "PUBLIC_PATH=/notes_bs/ \
+							REACT_APP_API_SERVER_HOST=${{ github.event.client_payload.server_host }} \
+							REACT_APP_API_SERVER_PATH=${{ github.event.client_payload.gql_path }} \
+							REACT_APP_SUBSCRIBE_SERVER_PATH=${{ github.event.client_payload.subscribe_path }} \
+							yarn build"
+
+
+
+				- name: Clear dir
+					run : |
+						rm -rf ./notes_bs/*
+						mkdir -v -p ./notes_bs 
+
+				- name: Copy build
+					run : cp -r __notes_master/packages/client/build/* ./notes_bs 
+
+				- name: Remove notes 
+					run : rm -rf __notes_master
+
+				- name: Commit changes
+					uses: EndBug/add-and-commit@v4
+					with:
+						author_name: nerjs
+						author_email: nerjs.stap@gmail.com
+						message: "notes_bs: Rebuild from dispatch"
+						ref: master
+						add: .
+					env:
+						GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
