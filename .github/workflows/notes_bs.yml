@@ -42,7 +42,7 @@ jobs:
         run : |
           cd __notes_master/packages/client
           yarn
-          eval "PUBLIC_PATH=/notes_bs/ \
+          eval "PUBLIC_URL=/notes_bs/ \
             REACT_APP_API_SERVER_HOST=${{ github.event.client_payload.server_host }} \
             REACT_APP_API_SERVER_PATH=${{ github.event.client_payload.gql_path }} \
             REACT_APP_SUBSCRIBE_SERVER_PATH=${{ github.event.client_payload.subscribe_path }} \
