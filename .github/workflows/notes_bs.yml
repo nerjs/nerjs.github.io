@@ -41,7 +41,8 @@ jobs:
       - name: Build client
         run : |
           cd __notes_master/packages/client
-          yarn
+          yarn 
+          cat .env.gh > .env
           eval "PUBLIC_URL=/notes_bs/ \
             REACT_APP_API_SERVER_HOST=${{ github.event.client_payload.server_host }} \
             REACT_APP_API_SERVER_PATH=${{ github.event.client_payload.gql_path }} \
