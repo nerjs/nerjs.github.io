@@ -1,9 +1,9 @@
 
-name: Notes BS rebuild
+name: Webnotes rebuild
 
 on:
   repository_dispatch:
-    types: [ build_notes_gh ]
+    types: [ build_webnotes_gh ]
 
 jobs: 
 
@@ -33,17 +33,17 @@ jobs:
       - name: Clone notes repo
         uses: actions/checkout@v2
         with: 
-          repository: nerjs/notes_bs
+          repository: nerjs/webnotes
           ref: master
-          path: __notes_master
+          path: __webnotes_master
 
 
       - name: Build client
         run : |
-          cd __notes_master/packages/client
+          cd __webnotes_master/packages/client
           yarn 
           cat .env.gh > .env
-          eval "PUBLIC_URL=/notes_bs/ \
+          eval "PUBLIC_URL=/webnotes/ \
             REACT_APP_API_SERVER_HOST=${{ github.event.client_payload.server_host }} \
             REACT_APP_API_SERVER_PATH=${{ github.event.client_payload.gql_path }} \
             REACT_APP_SUBSCRIBE_SERVER_PATH=${{ github.event.client_payload.subscribe_path }} \
@@ -53,14 +53,14 @@ jobs:
 
       - name: Clear dir
         run : |
-          rm -rf ./notes_bs/*
-          mkdir -v -p ./notes_bs 
+          rm -rf ./webnotes/*
+          mkdir -v -p ./webnotes 
 
       - name: Copy build
-        run : cp -r __notes_master/packages/client/build/* ./notes_bs 
+        run : cp -r __webnotes_master/packages/client/build/* ./webnotes 
 
-      - name: Remove notes 
-        run : rm -rf __notes_master
+      - name: Remove webnotes repo 
+        run : rm -rf __webnotes_master
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v4

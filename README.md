@@ -1,6 +1,7 @@
 # nerjs.github.io
 
-![Notes BS rebuild](https://github.com/nerjs/nerjs.github.io/workflows/Notes%20BS%20rebuild/badge.svg?branch=master)
+![Webnotes rebuild](https://github.com/nerjs/nerjs.github.io/workflows/Webnotes%20rebuild/badge.svg?branch=master&event=repository_dispatch)
+
 
 > https://nerjs.github.io
 
